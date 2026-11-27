@@ -2,6 +2,18 @@ find_package(Threads REQUIRED)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 file(GLOB_RECURSE ${PROJECT}_SOURCES "*.cpp" "*.h" "*.rc")
+if (PS2)
+  file(GLOB_RECURSE PS2_EXCLUDE_SRCS
+	"${CMAKE_CURRENT_SOURCE_DIR}/audio/eax/*"
+	"${CMAKE_CURRENT_SOURCE_DIR}/audio/oal/*"
+	"${CMAKE_CURRENT_SOURCE_DIR}/skel/win/*"
+	"${CMAKE_CURRENT_SOURCE_DIR}/skel/glfw/*"
+	"${CMAKE_CURRENT_SOURCE_DIR}/skel/sdl2/*"
+	"${CMAKE_CURRENT_SOURCE_DIR}/skel/android/*"
+    )
+    list(REMOVE_ITEM ${PROJECT}_SOURCES ${PS2_EXCLUDE_SRCS})
+endif()
+
 list(REMOVE_ITEM ${PROJECT}_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/extras/GitSHA1.cpp")
 
 function(header_directories RETURN_LIST)
@@ -117,13 +129,20 @@ elseif(${PROJECT}_AUDIO STREQUAL "MSS")
     target_compile_definitions(${EXECUTABLE} PRIVATE AUDIO_MSS)
     target_link_libraries(${EXECUTABLE} PRIVATE MilesSDK::MilesSDK)
 endif()
-
-if(NOT TARGET MPG123::libmpg123)
-    find_package(mpg123 REQUIRED)
+if(NOT PS2)
+	if(NOT TARGET MPG123::libmpg123)
+    	   find_package(mpg123 REQUIRED)
+	endif()
+	target_link_libraries(${EXECUTABLE} PRIVATE
+    	MPG123::libmpg123
+	)
 endif()
-target_link_libraries(${EXECUTABLE} PRIVATE
-    MPG123::libmpg123
-)
+if(PS2)
+    target_compile_definitions(${EXECUTABLE} PRIVATE PS2 RW_PS2 _GNU_SOURCE)
+    target_link_libraries(${EXECUTABLE} PRIVATE
+	-lkernel -lpad -ldma -lpacket2 -lgraph -ldraw -laudsrv
+    )
+endif()
 if(${PROJECT}_WITH_OPUS)
     find_package(opusfile REQUIRED)
     target_link_libraries(${EXECUTABLE} PRIVATE

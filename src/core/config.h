@@ -151,10 +151,16 @@ enum Config {
 	NUM_SHORTCUT_START_POINTS = 16
 };
 
+
+
 // We don't expect to compile for PS2 or Xbox
 // but it might be interesting for documentation purposes
+#ifdef PS2
+#define GTA_PS2
+#else
 #define GTA_PC
-//#define GTA_PS2
+#endif
+
 //#define GTA_XBOX
 #define GTA_MOBILE
 
@@ -446,11 +452,14 @@ static_assert(false, "SUPPORT_XBOX_SCRIPT and SUPPORT_MOBILE_SCRIPT are mutually
 #define IMPROVED_CAMERA		// Better Debug cam, and maybe more in the future
 #define FREE_CAM		// Rotating cam
 
+#ifndef GTA_PS2
 // Audio
 #define EXTERNAL_3D_SOUND // use external engine to simulate 3d audio spatialization. OpenAL would not work without it (because it works in a 3d space
                           // originally and making it work in 2d only requires more resource). Will not work on PS2
+#define AUDIO_REVERB // Enable audio reverb. It was disabled in PS2 and mobile version
+#endif
+
 #define AUDIO_REFLECTIONS // Enable audio reflections. This is enabled in all vanilla versions
-#define AUDIO_REVERB // Enable audio reverb. It was disabled in PS2 and mobile versions
 #define RADIO_SCROLL_TO_PREV_STATION // Won't work without FIX_BUGS
 #define AUDIO_CACHE // cache sound lengths to speed up the cold boot
 #define PS2_AUDIO_CHANNELS // increases the maximum number of audio channels to PS2 value of 43 (PC has 28 originally)

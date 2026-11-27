@@ -135,7 +135,7 @@ public:
 	};
 
 	bool                  m_bFirstCapture;
-#if defined RW_GL3
+#if defined RW_GL3 || defined RW_PS2
     JoyState              m_OldState;
     JoyState              m_NewState;
 #else

@@ -12,6 +12,10 @@
 #define __STDC_LIMIT_MACROS // so we get UINT32_MAX etc
 #endif
 
+#ifdef PS2
+typedef unsigned int uint128 __attribute__((mode(TI)));
+#include <strings.h>
+#endif
 
 #ifdef __SWITCH__
 #include <switch.h>
