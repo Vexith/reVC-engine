@@ -102,7 +102,7 @@ typedef uint8_t uint8;
 typedef int8_t int8;
 typedef uint16_t uint16;
 typedef int16_t int16;
-#ifndef __MWERKS__
+#if !defined(__MWERKS__) && !defined(_EE)
 typedef uint32_t uint32;
 typedef int32_t int32;
 #else
@@ -379,7 +379,7 @@ __inline__ void TRACE(char *f, ...) { } // this is re3 only, and so the function
 #endif
 #define ASSERT assert
 
-#if defined(__MWERKS__) || defined(GTA_PS2)
+#if defined(__MWERKS__)
 #define static_assert(bool_constexpr, message)
 #endif
 

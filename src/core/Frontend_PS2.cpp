@@ -26,6 +26,11 @@
 #include "MemoryCard.h"
 
 #define CRect_SZ(x, y, w, h) CRect(x, y, x+w, y+h)
+#define BlurOn CMBlur::BlurOn
+#define SOUND_FRONTEND_MENU_NAVIGATION SOUND_FRONTEND_HIGHLIGHT_OPTION
+#define SOUND_FRONTEND_MENU_NEW_PAGE SOUND_FRONTEND_ENTER_OR_ADJUST
+#define SOUND_FRONTEND_MENU_SETTING_CHANGE SOUND_FRONTEND_ENTER_OR_ADJUST
+
 
 wchar MemoryCard_FileNames[8][100+1];
 CMenuManager FrontEndMenuManager;

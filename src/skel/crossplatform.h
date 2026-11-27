@@ -1,7 +1,7 @@
 #ifndef __GTA_CROSSPLATFORM_H__
 #define __GTA_CROSSPLATFORM_H__
 
-#ifndef GTA_PS2
+#if 1
 
 #include <time.h>
 #include <limits.h>

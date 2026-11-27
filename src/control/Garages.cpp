@@ -154,7 +154,7 @@ void CGarages::Init(void)
 	if (hGarages >= 0)
 		DMAudio.SetEntityStatus(hGarages, TRUE);
 }
-
+#ifndef GTA_PS2
 void CGarages::Shutdown(void)
 {
 	NumGarages = 0;
@@ -163,7 +163,7 @@ void CGarages::Shutdown(void)
 	DMAudio.DestroyEntity(hGarages);
 	hGarages = AEHANDLE_NONE;
 }
-
+#endif
 void CGarages::Update(void)
 {
 	static uint32 GarageToBeTidied = 0;

@@ -138,6 +138,7 @@ public:
 	bool m_bInitialised;
 	bool m_bWantToUpdateContent;
 	bool m_bMenuActive;
+	bool m_bActivateSaveMenu;
 	bool m_bWantToRestart;
 	//char field_38; //unused ?
 	bool m_bRenderGameInMenu;

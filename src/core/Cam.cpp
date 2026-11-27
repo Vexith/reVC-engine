@@ -3891,7 +3891,7 @@ CCam::Process_SpecialFixedForSyphon(const CVector &CameraTarget, float, float, f
 	FOV = DefaultFOV;
 }
 
-#ifdef IMPROVED_CAMERA
+#ifdef GTA_PC_CONTROLS
 
 #define KEYJUSTDOWN(k) ControlsManager.GetIsKeyboardKeyJustDown((RsKeyCodes)k)
 #define KEYDOWN(k) ControlsManager.GetIsKeyboardKeyDown((RsKeyCodes)k)
@@ -4177,7 +4177,7 @@ CCam::Process_ModelView(const CVector &CameraTarget, float, float, float)
 		Distance += CPad::GetPad(0)->GetLeftStickY()/1000.0f;
 	else
 		Distance += CPad::GetPad(0)->GetLeftStickY() * ((Distance - 10.0f)/20.0f + 1.0f) / 1000.0f;
-#ifdef IMPROVED_CAMERA
+#if defined(IMPROVED_CAMERA) && defined(GTA_PC_CONTROLS)
 	if(CPad::GetPad(0)->GetLeftMouse()){
 		Distance += DEGTORAD(CPad::GetPad(0)->GetMouseY()/2.0f);
 		Angle += DEGTORAD(CPad::GetPad(0)->GetMouseX()/2.0f);

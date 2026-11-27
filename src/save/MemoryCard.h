@@ -6,8 +6,9 @@
 
 #if defined(PS2)
 #include <libcdvd.h>
-#include <sifdev.h>
-#include <libvu0.h>
+#include <sifrpc.h>
+//#include <libvu0.h>
+#include <libmc.h>
 #endif
 
 enum

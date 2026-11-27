@@ -754,10 +754,11 @@ void CTheScripts::Init()
 #ifdef USE_DEBUG_SCRIPT_LOADER
 	// glfwGetKey doesn't work because of CGame::Initialise is blocking
 	CPad::UpdatePads();
+	#ifdef GTA_PC_CONTROLS
 	if(CPad::GetPad(0)->GetChar('G')) ScriptToLoad = 0;
 	if(CPad::GetPad(0)->GetChar('R')) ScriptToLoad = 1;
 	if(CPad::GetPad(0)->GetChar('D')) ScriptToLoad = 2;
-
+	#endif
 	int mainf = OpenScript();
 #else
 	CFileMgr::SetDir("data");
@@ -3250,9 +3251,11 @@ void RetryMission(int type, int unk)
 {
 	if (type == MISSION_RETRY_TYPE_SUGGEST_TO_PLAYER) {
 		doingMissionRetry = true;
+		#ifndef PS2_MENU
 		FrontEndMenuManager.m_nCurrScreen = MENUPAGE_MISSION_RETRY;
 		FrontEndMenuManager.m_bAttemptingMissionRetry = true;
 		FrontEndMenuManager.RequestFrontEndStartUp();
+		#endif
 	}
 	else if (type == MISSION_RETRY_TYPE_BEGIN_RESTARTING) {
 		doingMissionRetry = false;

@@ -1,5 +1,6 @@
-#include "common.h"
 
+#include "common.h"
+#ifndef GTA_PS2
 #include "Font.h"
 #include "Pad.h"
 #include "Text.h"
@@ -435,3 +436,4 @@ CAnimViewer::Shutdown(void)
 	CStreaming::Shutdown();
 	CTxdStore::RemoveTxdSlot(animTxdSlot);
 }
+#endif

@@ -1,4 +1,5 @@
 #include "common.h"
+#ifndef PS2_MENU
 #if defined DETECT_JOYSTICK_MENU && defined XINPUT
 #include <windows.h>
 #include <xinput.h>
@@ -815,5 +816,6 @@ CMenuScreenCustom aScreens[] = {
 	{ "", 0, nil, nil, },
 };
 
+#endif
 #endif
 #endif

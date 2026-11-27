@@ -139,6 +139,7 @@ if(NOT PS2)
 endif()
 if(PS2)
     target_compile_definitions(${EXECUTABLE} PRIVATE PS2 RW_PS2 _GNU_SOURCE)
+    target_compile_options(${EXECUTABLE} PRIVATE -fpermissive)
     target_link_libraries(${EXECUTABLE} PRIVATE
 	-lkernel -lpad -ldma -lpacket2 -lgraph -ldraw -laudsrv
     )

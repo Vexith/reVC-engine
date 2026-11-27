@@ -626,6 +626,7 @@ public:
 	bool m_AllowNavigation;
 	uint8 field_37;
 	bool m_bMenuActive;
+	bool m_bActivateSaveMenu;
 	bool m_bWantToRestart;
 	bool m_bFirstTime;
 	bool m_bActivateSaveMenu;

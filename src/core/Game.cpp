@@ -201,12 +201,14 @@ CGame::InitialiseRenderWare(void)
 	CVisibilityPlugins::Initialise();
 
 #ifdef GTA_PS2
+#ifndef LIBRW
 	RpSkySelectTrueTSClipper(TRUE);
 	RpSkySelectTrueTLClipper(TRUE);
 
 	// PS2ManagerApplyDirectionalLightingCB() uploads the GTA lights
 	// directly without going through RpWorld and all that
 	SetupPS2ManagerDefaultLightingCallback();
+#endif
 	PreAllocateRwObjects();
 #endif
 

@@ -43,7 +43,7 @@
 #include "TrafficLights.h"
 
 #ifdef GTA_PS2
-#include "eetypes.h"
+#include <tamtypes.h>
 #include "libpad.h"
 #endif
 

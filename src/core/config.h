@@ -187,7 +187,7 @@ enum Config {
 #	define GTA_PS2_STUFF
 #	define RANDOMSPLASH
 //#	define USE_CUSTOM_ALLOCATOR
-#	define VU_COLLISION
+//#	define VU_COLLISION
 #	define PS2_MENU
 #elif defined GTA_PC
 #	define EXTERNAL_3D_SOUND
@@ -218,6 +218,9 @@ enum Config {
 // pc: FINAL & MASTER
 // mobile: FINAL
 
+#ifdef GTA_PS2
+#define FINAL
+#endif
 // MASTER builds must be FINAL
 #ifdef MASTER
 #define FINAL
@@ -277,7 +280,7 @@ enum Config {
 	// not in master builds
 	#define VALIDATE_SAVE_SIZE
 
-	#define DEBUGMENU
+	//#define DEBUGMENU
 #endif
 
 #ifdef FINAL

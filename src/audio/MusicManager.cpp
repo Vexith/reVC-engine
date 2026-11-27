@@ -65,8 +65,10 @@ uint32 NewGameRadioTimers[NUM_RADIOS] =
 	4246050,
 	1418050,
 	3178240,
-	471210,
-	0
+	471210
+	#ifndef GTA_PS2
+	,0
+	#endif
 };
 
 #ifdef GTA_PS2
@@ -613,7 +615,7 @@ cMusicManager::ServiceGameMode()
 						RadioStaticCounter = 0;
 					}
 				}
-#ifdef RADIO_SCROLL_TO_PREV_STATION
+#if defined(RADIO_SCROLL_TO_PREV_STATION) && defined(GTA_PC_CONTROLS)
 				else if(!CPad::GetPad(0)->ArePlayerControlsDisabled() && (CPad::GetPad(0)->GetMouseWheelDownJustDown() || CPad::GetPad(0)->GetMouseWheelUpJustDown()) && vehicle) {
 					if(!UsesPoliceRadio(vehicle) && !UsesTaxiRadio(vehicle)) {
 						int scrollNext = ControlsManager.GetControllerKeyAssociatedWithAction(VEHICLE_CHANGE_RADIO_STATION, MOUSE);

@@ -1042,7 +1042,6 @@ CMenuManager::DrawStandardMenus(bool activeScreen)
 	uint8 section = 0; // 0: highlight trapezoid  1: texts
 
 	while (section < 2) {
-#endif
 
 #ifdef SCROLLABLE_PAGES
 		int firstOption = SCREEN_HAS_AUTO_SCROLLBAR ? m_nFirstVisibleRowOnList : 0;
@@ -5922,7 +5921,7 @@ CMenuManager::PrintMap(void)
 		SCREEN_WIDTH, mapCrosshair.y - MENU_X(1.0f)),
 		CRGBA(0, 0, 0, 150));
 
-#endif
+
 	m_bMenuMapActive = false;
 
 	CFont::SetWrapx(MENU_X_RIGHT_ALIGNED(MENU_X_MARGIN));
@@ -6742,6 +6741,7 @@ CMenuManager::LoadController(int8 type)
 	}
 }
 #endif // GAMEPAD_MENU
-
+#endif
+#endif
 #undef GetBackJustUp
 #undef GetBackJustDown

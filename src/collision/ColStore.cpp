@@ -59,7 +59,7 @@ CColStore::AddColSlot(const char *name)
 }
 
 void
-CColStore::RemoveColSlot(int slot)
+CColStore::RemoveColSlot(int32 slot)
 {
 	if(GetSlot(slot)){
 		if(GetSlot(slot)->isLoaded)
@@ -235,7 +235,9 @@ CColStore::EnsureCollisionIsInMemory(const CVector2D &pos)
 		   !CStreaming::HasColLoaded(i)){
 			CStreaming::RequestCol(i, 0);
 			if(TheCamera.GetScreenFadeStatus() == FADE_0)
+				#ifndef PS2_MENU
 				FrontEndMenuManager.MessageScreen("LOADCOL", false);
+				#endif
 			CTimer::Suspend();
 			CStreaming::LoadAllRequestedModels(false);
 			CTimer::Resume();

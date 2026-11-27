@@ -81,7 +81,7 @@ float CCamera::m_fMouseAccelVertical;
 float CCamera::m_f3rdPersonCHairMultX;
 float CCamera::m_f3rdPersonCHairMultY;
 
-#ifdef IMPROVED_CAMERA
+#ifdef GTA_PC_CONTROLS
 #define KEYJUSTDOWN(k) ControlsManager.GetIsKeyboardKeyJustDown((RsKeyCodes)k)
 #define KEYDOWN(k) ControlsManager.GetIsKeyboardKeyDown((RsKeyCodes)k)
 #define CTRLJUSTDOWN(key) \
@@ -281,7 +281,7 @@ CCamera::Process(void)
 		ProcessWideScreenOn();
 
 #ifndef MASTER
-#ifdef IMPROVED_CAMERA
+#ifdef defined(IMPROVED_CAMERA) && defined(GTA_PC_CONTROLS)
 	if(CPad::GetPad(1)->GetCircleJustDown() || CTRLJUSTDOWN('B')){
 #else
 	if(CPad::GetPad(1)->GetCircleJustDown()){

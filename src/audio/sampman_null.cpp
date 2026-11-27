@@ -403,10 +403,11 @@ void
 cSampleManager::SetStreamedFileLoopFlag(bool8 nLoopFlag, uint8 nChannel)
 {
 }
-
+#ifdef EXTERNAL_3D_SOUND
 int8 cSampleManager::AutoDetect3DProviders()
 {
 	return -1;
 }
+#endif
 
 #endif
